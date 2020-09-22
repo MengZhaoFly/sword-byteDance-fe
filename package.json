@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "sword-byteDance-fe",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "clear": "rm -rf ./build && rm -rf ./public",
     "lint": "npx eslint ./src ./scripts ./config"
   },
-  "author": "",
+  "author": "zhaomeng",
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.2.2",

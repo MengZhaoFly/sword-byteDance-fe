@@ -3,6 +3,10 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 import { renderRoutes } from 'react-router-config';
 import Header from './Components/Header/Header';
+// eslint-disable-next-line no-unused-vars
+import codeStyle from './theme/code.less';
+// eslint-disable-next-line no-unused-vars
+import articleStyle from './theme/article.less';
 
 Sentry.init({
   dsn: 'https://86177b3e03f34d51ab4e2accc8a64d56@o449970.ingest.sentry.io/5433878',

@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./webpack.base.js');
 
 const clientConfig = {
-  entry: path.resolve(__dirname, '../src/client/index.js'),
+  entry: path.resolve(__dirname, '../src/client/index.jsx'),
   output: {
     path: path.resolve(__dirname, '../public'),
     filename: '[name]_bundle.js',
