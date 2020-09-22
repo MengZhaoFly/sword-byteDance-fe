@@ -16,9 +16,16 @@
 
 ## 贡献
 
-通过 Issues 方式记录，别人无法参与，所以更新不是很频繁，再找一个更好的方式。
+MD: 根据已知的测试，因为jsx的原因暂不支持（表格，数学公式，带style的html）
+在 post 目录下，找到自己贡献的分类，书写 markDown 即可。
 
-## 分类
+1. npm run build:client
+2. npm run build:server
+3. npm run dev
+
+预览即可
+
+## 归档
 
 ### JS基础
 

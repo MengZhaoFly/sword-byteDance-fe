@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <!-- helmet.title -->
+  <!-- helmet.meta -->
+  <link rel="stylesheet" href="/css/antd.min.css">
+  <%= htmlWebpackPlugin.tags.headTags %>
+</head>
+<body>
+  <div id="root"><!-- injectHtml --></div>
+  <%= htmlWebpackPlugin.tags.bodyTags %>
+  <!-- injectScript -->
+  <script>window.main()</script>
+</body>
+</html>

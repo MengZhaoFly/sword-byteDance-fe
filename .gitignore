@@ -1,4 +1,8 @@
+## dist
+build/
+public/
 # Logs
+githubPost
 logs
 *.log
 npm-debug.log*
