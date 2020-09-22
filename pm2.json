@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "sword-byteDance-fe",
+      "script": "./build/bundle.js",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "ignoreWatch": [
+        "node_modules"
+      ],
+      "watch": true,
+      "exec_mode": "cluster"
+    }
+  ]
+}
