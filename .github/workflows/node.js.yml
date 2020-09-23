@@ -39,6 +39,6 @@ jobs:
         # Remote user
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         # Source directory
-        SOURCE: [build/, public/, pm2.json]
+        SOURCE: build/
         # Target directory
         TARGET: /root/myNode/sword-byteDance-fe/
