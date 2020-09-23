@@ -27,7 +27,7 @@ jobs:
     - run: npm i
     - run: npm run build:client
     - run: npm run build:server
-    - name: ssh deploy build
+    - name: ssh deploy
       # You may pin to the exact commit or the version.
       # uses: easingthemes/ssh-deploy@191986574c0735ffad7ae1a297a414d6e6f95375
       uses: easingthemes/ssh-deploy@v2.1.5
@@ -39,36 +39,16 @@ jobs:
         # Remote user
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         # Source directory
-        SOURCE: build/
-        # Target directory
-        TARGET: /root/myNode/sword-byteDance-fe/build
-    - name: ssh deploy public
-      # You may pin to the exact commit or the version.
-      # uses: easingthemes/ssh-deploy@191986574c0735ffad7ae1a297a414d6e6f95375
-      uses: easingthemes/ssh-deploy@v2.1.5
-      with:
-        # Private Key
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        # Remote host
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        # Remote user
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        # Source directory
-        SOURCE: public/
-        # Target directory
-        TARGET: /root/myNode/sword-byteDance-fe/public
-    - name: ssh deploy pm2.json
-      # You may pin to the exact commit or the version.
-      # uses: easingthemes/ssh-deploy@191986574c0735ffad7ae1a297a414d6e6f95375
-      uses: easingthemes/ssh-deploy@v2.1.5
-      with:
-        # Private Key
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        # Remote host
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        # Remote user
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        # Source directory
-        SOURCE: pm2.json
+        SOURCE: /
         # Target directory
         TARGET: /root/myNode/sword-byteDance-fe/
+    - name: ssh command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          whoami
+          ls -al

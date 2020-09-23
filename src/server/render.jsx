@@ -44,6 +44,5 @@ export default (req, routes, context) => {
     .replace('<!-- helmet.meta -->', helmet.meta.toString())
     .replace('<!-- injectHtml -->', content)
     .replace('<!-- injectScript -->', scriptsTag);
-
   return htmlTpl;
 };
