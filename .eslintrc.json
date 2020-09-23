@@ -23,10 +23,12 @@
     "rules": {
         "react/state-in-constructor": 0,
         "react/prop-types": 0,
+        "react/jsx-props-no-spreading": 0,
         "no-restricted-syntax": 0,
         "no-continue": 0,
         "no-multi-assign": 0,
         "import/no-extraneous-dependencies": 0,
-        "no-param-reassign": 0
+        "no-param-reassign": 0,
+        "comma-dangle": 0
     }
 }
