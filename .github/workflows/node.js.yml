@@ -50,6 +50,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
+          cd /root/myNode/sword-byteDance-fe
           cnpm i
           npm run build:client
           npm run build:server
