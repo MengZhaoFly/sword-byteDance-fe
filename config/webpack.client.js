@@ -75,6 +75,9 @@ const clientConfig = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../template/index.html'),
       inject: false,
+      minify: {
+        removeComments: false,
+      },
     }),
     new webpack.DefinePlugin({
       CLIENT: true,

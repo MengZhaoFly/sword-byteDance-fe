@@ -50,5 +50,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          whoami
-          ls -al
+          cnpm i
+          npm run build:client
+          npm run build:server
+          pm2 start pm2.json

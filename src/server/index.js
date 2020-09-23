@@ -45,8 +45,8 @@ app.get('*', (req, res) => {
 });
 
 Loadable.preloadAll().then(() => {
-  app.listen(3000, () => {
-    console.log('Running on http://localhost:3000/');
+  app.listen(3001, () => {
+    console.log('Running on http://localhost:3001/');
   });
 }).catch((err) => {
   console.log(err);
