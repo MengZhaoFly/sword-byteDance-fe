@@ -52,7 +52,7 @@ function Header() {
       <Row>
         <Col {...colProps[0]}>
           <div className={styles.logo}>
-            剑指前端offer
+            <Link to="/">剑指前端offer</Link>
           </div>
         </Col>
         <Col {...colProps[1]}>
