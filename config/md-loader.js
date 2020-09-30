@@ -1,4 +1,5 @@
 const MarkdownIt = require('markdown-it');
+const path = require('path');
 const highlightjs = require('./hightLight');
 
 const markdownParser = new MarkdownIt({
@@ -27,6 +28,7 @@ const markdownParser = new MarkdownIt({
   },
 });
 module.exports = function (source) {
+  const title = path.parse(this.resourcePath).name;
   return new Promise((resolve) => {
     // markdownParser.renderer.rules.image = function () { return '/>'; };
     // function closeToken(tokens, idx, options, env, renderer) {
@@ -41,9 +43,15 @@ module.exports = function (source) {
 
     resolve(`
       import React from 'react';
+      import { Helmet } from "react-helmet";
       export default function Post() {
         return (
           <article id="article">
+          <Helmet>
+            <title>${title}</title>
+            <meta name="keywords" content="${title}"/>
+            <meta name="description" content="${title}"/>
+          </Helmet>
           ${html}
           </article>
         )

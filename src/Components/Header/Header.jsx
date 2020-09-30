@@ -43,7 +43,13 @@ function Header() {
         ))
       }
       <Menu.Item>
-        <a href="https://github.com/MengZhaoFly/sword-byteDance-fe" target="_blank">github</a>
+        <a
+          href="https://github.com/MengZhaoFly/sword-byteDance-fe"
+          rel="noreferrer"
+          target="_blank"
+        >
+          github
+        </a>
       </Menu.Item>
     </Menu>
   );
