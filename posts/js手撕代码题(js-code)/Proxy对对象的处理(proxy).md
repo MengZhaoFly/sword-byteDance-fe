@@ -25,15 +25,15 @@ function toSafeObj(obj) {
       // return undefined;
     }
   }
-  let proxyObj = new Proxy(obj, handle)
   function deepProxy(obj) {
     Object.keys(obj).forEach(k => {
       if (typeof obj[k] === 'object' || typeof obj[k] === 'function') {
-        obj[k] = new Proxy(obj[k], handle);
+        obj[k] = deepProxy(obj[k]);
       }
     })
+    return new Proxy(obj, handle)
   }
-  deepProxy(proxyObj);
+  let proxyObj = deepProxy(obj);
   return proxyObj;
 }
 let obj = {

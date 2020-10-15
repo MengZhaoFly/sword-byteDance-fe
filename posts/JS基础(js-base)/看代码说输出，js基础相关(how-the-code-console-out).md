@@ -1,4 +1,17 @@
 ## this
+```js
+var a = function () {
+     this.b =3;
+}
+var c = new a();
+a.prototype.b = 9;
+var b = 7;
+a();
+
+console.log(b);
+console.log(c.b); 
+```
+
 ### addEventListener
 ```js
 window.data = 5;
@@ -14,6 +27,7 @@ div.addEventListener('click', foo.click); // this 指向 div
 var bar = foo.click;
 bar();   // this 指向 window
 ```
+
 ### new 的 时候 this 指向
 ```js
 window.name = 'ByteDance';
