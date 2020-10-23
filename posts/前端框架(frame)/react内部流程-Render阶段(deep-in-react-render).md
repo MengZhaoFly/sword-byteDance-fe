@@ -6,9 +6,9 @@
 ## Render 阶段
 
 ### mount时(初始化挂载)
-
+可以理解为 递
 没有 work-in-progress
-开始 于 beginWork：**传入当前Fiber节点，创建子Fiber节点**
+开始 于 beginWork：传入当前Fiber节点，创建子Fiber节点
 
 ```js
 function beginWork(
@@ -196,6 +196,7 @@ completeWork 到达最后一个节点，最外层 div 时，div 内部的元素�
 
 ### update阶段
 
+#### beginWork
 有 work-in-progress。
 
 满足如下情况时didReceiveUpdate === false（即可以直接复用前一次更新的子Fiber，不需要新建子Fiber）
@@ -205,5 +206,41 @@ completeWork 到达最后一个节点，最外层 div 时，div 内部的元素�
 
 当不满足时，我们就进入第二部分，和 mount 阶段一样，创新建子Fiber。
 
+#### completeWork
+当update时，Fiber节点已经存在对应DOM节点，所以不需要生成DOM节点。需要做的主要是处理props，比如：
 
-## Commit 阶段
+- onClick、onChange等回调函数的注册
+- 处理style prop
+- 处理DANGEROUSLY_SET_INNER_HTML prop
+- 处理children prop
+
+```js
+if (current !== null && workInProgress.stateNode != null) {
+  // update的情况
+  updateHostComponent(
+    current,
+    workInProgress,
+    type,
+    newProps,
+    rootContainerInstance,
+  );
+}
+```
+
+在updateHostComponent内部，被处理完的props会被赋值给workInProgress.updateQueue，并最终会在commit阶段被渲染在页面上。
+
+workInProgress.updateQueue = (updatePayload: any);
+其中updatePayload为数组形式，他的奇数索引的值为变化的prop key，偶数索引的值为变化的prop value。
+比如：title 更新为 4，child 更新为 5，updatePayload为`['title', 4, 'child', 5]`
+
+作为DOM操作的依据，commit阶段需要找到所有有effectTag的Fiber节点并依次执行effectTag对应操作。难道需要在commit阶段**再遍历**一次Fiber树寻找`effectTag !== null`的Fiber节点么？
+
+这显然是很低效的。
+为了解决这个问题，在completeWork的上层函数completeUnitOfWork中，每个执行完completeWork且存在effectTag的Fiber节点会被保存在一条被称为effectList的单向链表中
+```js
+                       nextEffect         nextEffect
+rootFiber.firstEffect -----------> fiber -----------> fiber
+```
+这样，在commit阶段只需要遍历effectList就能执行所有effect了。
+借用React团队成员Dan Abramov的话：effectList相较于Fiber树，就像圣诞树上挂的那一串彩灯。
+

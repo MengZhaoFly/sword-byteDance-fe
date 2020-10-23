@@ -5,10 +5,15 @@ async function read() {
   async function walk(parent, path) {
     const dir = await fs.promises.opendir(path);
     for await (const dirent of dir) {
+      // 跳过入口文件 当访问到这个 url 时，会作为组件展示
       if (dirent.name === 'index.jsx') continue;
+      // 不是目录 并且也不是 md 文件跳过 处理不了
       if (!dirent.isDirectory() && !dirent.name.endsWith('md')) continue;
+      const stats = await fs.promises.lstat(path);
       const node = {
         name: dirent.name,
+        ctime: stats.ctime,
+        mtime: stats.mtime
       };
       let routePath = path;
       routePath = routePath.split('/')
@@ -49,6 +54,7 @@ async function read() {
   // 脚本运行是在根目录下运行
   // node scripts/readPost.js
   await walk(res, './posts/');
+  // console.log(JSON.stringify(res, null, 2));
   return res;
 }
 module.exports = read;
