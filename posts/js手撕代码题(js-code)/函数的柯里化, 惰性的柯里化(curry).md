@@ -5,12 +5,13 @@
 - sum(1,2,3,4,5)   sum(1,2,3)(4,5)  sum(1)(2)(3)(4)(5)  结果都是15。
 
 ### 惰性 curry 之所以叫惰性，因为调用 sumOf 才显示地求值：
-手写一个函数的柯里化，实现下面功能：
+1. 手写一个函数的柯里化，实现下面功能：
 - add(2,3,4).sumOf()
 - add(2)(3,4).sumOf()
 - add(2)(3)(4).sumOf()
 - add(2,3)(4).sumOf()
 
+2. 实现const a = add(1)(2)(3) console.log(a.get())//6;
 ## 题解
 普通 curry
 ```js
@@ -64,5 +65,9 @@ console.log(csum(1,5)(2).sumOf());
 ## 出处
 作者：我是你找不到的小铭
 链接：https://www.nowcoder.com/discuss/452433
+
+来源：牛客网
+作者：ccsyu
+链接：https://www.nowcoder.com/discuss/511120
 来源：牛客网
 
