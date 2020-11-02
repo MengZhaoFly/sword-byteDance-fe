@@ -52,6 +52,8 @@ jobs:
         script: |
           cd /root/myNode/sword-byteDance-fe
           cnpm i
+          rm -rf public/
+          rm -rf build/
           npm run build:client
           npm run build:server
           pm2 start pm2.json
