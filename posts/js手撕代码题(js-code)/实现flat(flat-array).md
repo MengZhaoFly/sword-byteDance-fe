@@ -35,3 +35,30 @@ console.log(flat(a, 2));
 作者：前向け、ニート
 链接：https://www.nowcoder.com/discuss/542234
 来源：牛客网
+
+
+
+## 题目
+数组扁平化？至少两种方法实现
+
+## 题解
+```js
+function flat(array) {
+  let stack = [...array];
+  let res = []
+  while(stack.length) {
+    let item = stack.pop();
+    if (Array.isArray(item)) {
+      stack.push(...item);
+    } else {
+      res.unshift(item);
+    }
+  }
+  return res;
+}
+```
+
+## 出处
+作者：Greatiga
+链接：https://www.nowcoder.com/discuss/537024
+来源：牛客网
