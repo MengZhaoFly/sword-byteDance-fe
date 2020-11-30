@@ -139,3 +139,73 @@ function resolve(tree) {
 作者：ZhengjieTang
 链接：https://www.nowcoder.com/discuss/463626
 来源：牛客网
+
+
+
+## 题目
+```js
+给定
+const obj = {
+  label: "c",
+  value: 3,
+  children: [
+    { label: "a", value: 1 },
+    { label: "b", value: 2 },
+  ],
+};
+输出
+let data: Data[] = [
+  {label: 'a', value: 1, parentValue: 3},
+  {label: 'b', value: 2, parentValue: 3},
+  {label: 'c', value: 3},
+]
+```
+
+## 题解
+```js
+const obj = {
+  label: "c",
+  value: 3,
+  children: [
+    { label: "a", value: 1 },
+    {
+      label: "b", value: 2,
+      children: [
+        {
+          label: 'c', value: -1
+        }
+      ]
+    },
+  ],
+};
+
+let data = [
+  { label: 'a', value: 1, parentValue: 3 },
+  { label: 'b', value: 2, parentValue: 3 },
+  { label: 'c', value: 3 },
+]
+function convert(tree) {
+  let res = [];
+  function walk(node, parent) {
+    if (node) {
+      let t = {
+        label: node.label,
+        value: node.value
+      }
+      if (parent) t.parent = parent.value
+      res.push(t);
+    }
+    if (node.children) {
+      for (let child of node.children) {
+        walk(child, node);
+      }
+    }
+  }
+  walk(tree)
+  return res;
+}
+console.log(convert(obj))
+```
+
+## 出处
+作者：佳俊
