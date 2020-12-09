@@ -9,5 +9,5 @@ function Algorithm(props) {
     </div>
   )
 }
- 
+
 export default Algorithm;
