@@ -21,7 +21,7 @@
     "@sentry/browser": "^5.24.2",
     "@sentry/tracing": "^5.24.2",
     "antd": "^4.6.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "express": "^4.16.4",
     "highlight.js": "^10.1.2",
     "markdown-it": "^11.0.0",
